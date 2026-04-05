@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Phone, CheckCircle, ArrowRight, User, MapPin, Wrench } from 'lucide-react'
+import { Phone, CheckCircle, ArrowRight, User, MapPin, Wrench, Lock } from 'lucide-react'
 
 const services = [
   'Plancher de garage',
@@ -10,14 +10,13 @@ const services = [
   'Autre',
 ]
 
-export default function LeadForm({ city = '', compact = false }) {
+export default function LeadForm({ city = '' }) {
   const [step, setStep] = useState(1)
   const [form, setForm] = useState({ service: '', name: '', phone: '', city: city })
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // Formspree endpoint — replace FORM_ID with your actual ID
     try {
       await fetch('https://formspree.io/f/mpqoobqw', {
         method: 'POST',
@@ -40,7 +39,7 @@ export default function LeadForm({ city = '', compact = false }) {
     width: '100%', padding: '16px',
     background: 'linear-gradient(135deg, #1a73e8, #1557b0)',
     color: '#fff', border: 'none', borderRadius: '10px',
-    fontSize: '17px', fontWeight: '700', cursor: 'pointer',
+    fontSize: '16px', fontWeight: '700', cursor: 'pointer',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
     fontFamily: 'Inter, sans-serif', transition: 'all 0.2s ease',
   }
@@ -56,14 +55,14 @@ export default function LeadForm({ city = '', compact = false }) {
           <CheckCircle size={36} color="#fff" />
         </div>
         <h3 style={{ fontSize: '24px', fontWeight: '800', color: '#1a1a1a', margin: '0 0 10px' }}>
-          Demande reçue!
+          Demande reçue
         </h3>
-        <p style={{ color: '#64748b', fontSize: '16px', margin: '0 0 24px' }}>
-          Un entrepreneur certifié vous contactera sous <strong>2 heures</strong> pour votre soumission gratuite.
+        <p style={{ color: '#64748b', fontSize: '16px', margin: '0 0 24px', lineHeight: '1.6' }}>
+          Un entrepreneur certifié vous contactera dans les prochains jours ouvrables pour votre soumission gratuite.
         </p>
         <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '16px' }}>
           <p style={{ color: '#15803d', fontSize: '14px', fontWeight: '600', margin: 0 }}>
-            ✓ Soumission 100% gratuite et sans engagement
+            Soumission 100% gratuite et sans engagement
           </p>
         </div>
       </motion.div>
@@ -80,12 +79,12 @@ export default function LeadForm({ city = '', compact = false }) {
       </div>
 
       <AnimatePresence mode="wait">
-        {/* Step 1 — Service */}
         {step === 1 && (
           <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-            <p style={{ fontSize: '13px', fontWeight: '600', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '0 0 8px' }}>Étape 1/3</p>
-            <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#1a1a1a', margin: '0 0 20px' }}>
-              Quel type de plancher? <Wrench size={18} style={{ display: 'inline', marginLeft: '6px', color: '#1a73e8' }} />
+            <p style={{ fontSize: '12px', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '0 0 8px' }}>Étape 1 sur 3</p>
+            <h3 style={{ fontSize: '19px', fontWeight: '700', color: '#1a1a1a', margin: '0 0 20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Wrench size={18} color="#1a73e8" />
+              Quel type de projet?
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {services.map(s => (
@@ -97,30 +96,31 @@ export default function LeadForm({ city = '', compact = false }) {
                     borderColor: form.service === s ? '#1a73e8' : '#e2e8f0',
                     background: form.service === s ? '#eff6ff' : '#fff',
                     borderRadius: '10px', cursor: 'pointer', textAlign: 'left',
-                    fontSize: '15px', fontWeight: '600', color: '#1a1a1a',
+                    fontSize: '15px', fontWeight: '500', color: '#1a1a1a',
                     fontFamily: 'Inter, sans-serif', transition: 'all 0.15s',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = '#1a73e8'; e.currentTarget.style.background = '#eff6ff' }}
+                  onMouseLeave={e => { if (form.service !== s) { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.background = '#fff' } }}
                 >
                   {s}
-                  <ArrowRight size={16} color="#94a3b8" />
+                  <ArrowRight size={15} color="#94a3b8" />
                 </button>
               ))}
             </div>
           </motion.div>
         )}
 
-        {/* Step 2 — Location */}
         {step === 2 && (
           <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-            <p style={{ fontSize: '13px', fontWeight: '600', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '0 0 8px' }}>Étape 2/3</p>
-            <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#1a1a1a', margin: '0 0 20px' }}>
-              Où êtes-vous situé? <MapPin size={18} style={{ display: 'inline', marginLeft: '6px', color: '#1a73e8' }} />
+            <p style={{ fontSize: '12px', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '0 0 8px' }}>Étape 2 sur 3</p>
+            <h3 style={{ fontSize: '19px', fontWeight: '700', color: '#1a1a1a', margin: '0 0 20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <MapPin size={18} color="#1a73e8" />
+              Votre localisation
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <input
-                required
-                value={form.city}
+                required value={form.city}
                 onChange={e => setForm({ ...form, city: e.target.value })}
                 placeholder="Votre ville (ex: Montréal, Sherbrooke...)"
                 style={inputStyle}
@@ -131,27 +131,27 @@ export default function LeadForm({ city = '', compact = false }) {
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Continuer <ArrowRight size={18} />
+                Continuer <ArrowRight size={17} />
               </button>
-              <button type="button" onClick={() => setStep(1)} style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '14px', cursor: 'pointer', fontFamily: 'Inter, sans-serif' }}>
-                ← Retour
+              <button type="button" onClick={() => setStep(1)} style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '14px', cursor: 'pointer', fontFamily: 'Inter, sans-serif', padding: '4px' }}>
+                Retour
               </button>
             </div>
           </motion.div>
         )}
 
-        {/* Step 3 — Contact */}
         {step === 3 && (
           <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-            <p style={{ fontSize: '13px', fontWeight: '600', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '0 0 8px' }}>Étape 3/3</p>
-            <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#1a1a1a', margin: '0 0 20px' }}>
-              Vos coordonnées <User size={18} style={{ display: 'inline', marginLeft: '6px', color: '#1a73e8' }} />
+            <p style={{ fontSize: '12px', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '0 0 8px' }}>Étape 3 sur 3</p>
+            <h3 style={{ fontSize: '19px', fontWeight: '700', color: '#1a1a1a', margin: '0 0 20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <User size={18} color="#1a73e8" />
+              Vos coordonnées
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <input
                 required value={form.name}
                 onChange={e => setForm({ ...form, name: e.target.value })}
-                placeholder="Votre prénom et nom"
+                placeholder="Prénom et nom"
                 style={inputStyle}
                 onFocus={e => e.target.style.borderColor = '#1a73e8'}
                 onBlur={e => e.target.style.borderColor = '#e2e8f0'}
@@ -159,7 +159,7 @@ export default function LeadForm({ city = '', compact = false }) {
               <input
                 required type="tel" value={form.phone}
                 onChange={e => setForm({ ...form, phone: e.target.value })}
-                placeholder="Votre numéro de téléphone"
+                placeholder="Numéro de téléphone"
                 style={inputStyle}
                 onFocus={e => e.target.style.borderColor = '#1a73e8'}
                 onBlur={e => e.target.style.borderColor = '#e2e8f0'}
@@ -168,16 +168,19 @@ export default function LeadForm({ city = '', compact = false }) {
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                <Phone size={18} />
+                <Phone size={16} />
                 Recevoir ma soumission gratuite
               </button>
-              <button type="button" onClick={() => setStep(2)} style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '14px', cursor: 'pointer', fontFamily: 'Inter, sans-serif' }}>
-                ← Retour
+              <button type="button" onClick={() => setStep(2)} style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '14px', cursor: 'pointer', fontFamily: 'Inter, sans-serif', padding: '4px' }}>
+                Retour
               </button>
             </div>
-            <p style={{ color: '#94a3b8', fontSize: '12px', margin: '12px 0 0', textAlign: 'center' }}>
-              🔒 Vos informations sont confidentielles. Aucun spam.
-            </p>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', marginTop: '14px' }}>
+              <Lock size={12} color="#94a3b8" />
+              <p style={{ color: '#94a3b8', fontSize: '12px', margin: 0 }}>
+                Vos informations sont confidentielles. Aucun spam.
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
