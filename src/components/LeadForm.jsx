@@ -19,7 +19,7 @@ export default function LeadForm({ city = '', compact = false }) {
     e.preventDefault()
     // Formspree endpoint — replace FORM_ID with your actual ID
     try {
-      await fetch('https://formspree.io/f/FORM_ID', {
+      await fetch('https://formspree.io/f/mpqoobqw', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, _subject: `Nouveau lead époxy — ${form.city || city}` }),
