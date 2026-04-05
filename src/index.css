@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Lexend', sans-serif;
   -webkit-font-smoothing: antialiased;
   background: #fff;
-  color: #1a1a1a;
+  color: #020617;
 }
 
 #root { width: 100%; text-align: left; }
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: #1a73e8 !important;
-  box-shadow: 0 0 0 3px rgba(26,115,232,0.15);
+  border-color: #0369A1 !important;
+  box-shadow: 0 0 0 3px rgba(3,105,161,0.15);
 }

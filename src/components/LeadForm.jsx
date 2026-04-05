@@ -31,17 +31,17 @@ export default function LeadForm({ city = '' }) {
     width: '100%', padding: '14px 16px',
     background: '#f8faff', border: '2px solid #e2e8f0',
     borderRadius: '10px', fontSize: '16px',
-    fontFamily: 'Inter, sans-serif', color: '#1a1a1a',
+    fontFamily: 'Lexend, sans-serif', color: '#1a1a1a',
     transition: 'border-color 0.2s',
   }
 
   const btnStyle = {
     width: '100%', padding: '16px',
-    background: 'linear-gradient(135deg, #1a73e8, #1557b0)',
+    background: 'linear-gradient(135deg, #0369A1, #025f8c)',
     color: '#fff', border: 'none', borderRadius: '10px',
     fontSize: '16px', fontWeight: '700', cursor: 'pointer',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-    fontFamily: 'Inter, sans-serif', transition: 'all 0.2s ease',
+    fontFamily: 'Lexend, sans-serif', transition: 'all 0.2s ease',
   }
 
   if (submitted) {
@@ -74,7 +74,7 @@ export default function LeadForm({ city = '' }) {
       {/* Progress bar */}
       <div style={{ display: 'flex', gap: '6px', marginBottom: '24px' }}>
         {[1, 2, 3].map(s => (
-          <div key={s} style={{ flex: 1, height: '4px', borderRadius: '2px', background: s <= step ? '#1a73e8' : '#e2e8f0', transition: 'background 0.3s' }} />
+          <div key={s} style={{ flex: 1, height: '4px', borderRadius: '2px', background: s <= step ? '#0369A1' : '#e2e8f0', transition: 'background 0.3s' }} />
         ))}
       </div>
 
@@ -83,7 +83,7 @@ export default function LeadForm({ city = '' }) {
           <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
             <p style={{ fontSize: '12px', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '0 0 8px' }}>Étape 1 sur 3</p>
             <h3 style={{ fontSize: '19px', fontWeight: '700', color: '#1a1a1a', margin: '0 0 20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Wrench size={18} color="#1a73e8" />
+              <Wrench size={18} color="#0369A1" />
               Quel type de projet?
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -93,14 +93,14 @@ export default function LeadForm({ city = '' }) {
                   onClick={() => { setForm({ ...form, service: s }); setStep(2) }}
                   style={{
                     padding: '14px 18px', border: '2px solid',
-                    borderColor: form.service === s ? '#1a73e8' : '#e2e8f0',
-                    background: form.service === s ? '#eff6ff' : '#fff',
+                    borderColor: form.service === s ? '#0369A1' : '#e2e8f0',
+                    background: form.service === s ? '#e0f2fe' : '#fff',
                     borderRadius: '10px', cursor: 'pointer', textAlign: 'left',
                     fontSize: '15px', fontWeight: '500', color: '#1a1a1a',
-                    fontFamily: 'Inter, sans-serif', transition: 'all 0.15s',
+                    fontFamily: 'Lexend, sans-serif', transition: 'all 0.15s',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = '#1a73e8'; e.currentTarget.style.background = '#eff6ff' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = '#0369A1'; e.currentTarget.style.background = '#e0f2fe' }}
                   onMouseLeave={e => { if (form.service !== s) { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.background = '#fff' } }}
                 >
                   {s}
@@ -115,7 +115,7 @@ export default function LeadForm({ city = '' }) {
           <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
             <p style={{ fontSize: '12px', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '0 0 8px' }}>Étape 2 sur 3</p>
             <h3 style={{ fontSize: '19px', fontWeight: '700', color: '#1a1a1a', margin: '0 0 20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <MapPin size={18} color="#1a73e8" />
+              <MapPin size={18} color="#0369A1" />
               Votre localisation
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -124,7 +124,7 @@ export default function LeadForm({ city = '' }) {
                 onChange={e => setForm({ ...form, city: e.target.value })}
                 placeholder="Votre ville (ex: Montréal, Sherbrooke...)"
                 style={inputStyle}
-                onFocus={e => e.target.style.borderColor = '#1a73e8'}
+                onFocus={e => e.target.style.borderColor = '#0369A1'}
                 onBlur={e => e.target.style.borderColor = '#e2e8f0'}
               />
               <button type="button" style={btnStyle} onClick={() => { if (form.city) setStep(3) }}
@@ -133,7 +133,7 @@ export default function LeadForm({ city = '' }) {
               >
                 Continuer <ArrowRight size={17} />
               </button>
-              <button type="button" onClick={() => setStep(1)} style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '14px', cursor: 'pointer', fontFamily: 'Inter, sans-serif', padding: '4px' }}>
+              <button type="button" onClick={() => setStep(1)} style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '14px', cursor: 'pointer', fontFamily: 'Lexend, sans-serif', padding: '4px' }}>
                 Retour
               </button>
             </div>
@@ -144,7 +144,7 @@ export default function LeadForm({ city = '' }) {
           <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
             <p style={{ fontSize: '12px', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '0 0 8px' }}>Étape 3 sur 3</p>
             <h3 style={{ fontSize: '19px', fontWeight: '700', color: '#1a1a1a', margin: '0 0 20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <User size={18} color="#1a73e8" />
+              <User size={18} color="#0369A1" />
               Vos coordonnées
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -153,7 +153,7 @@ export default function LeadForm({ city = '' }) {
                 onChange={e => setForm({ ...form, name: e.target.value })}
                 placeholder="Prénom et nom"
                 style={inputStyle}
-                onFocus={e => e.target.style.borderColor = '#1a73e8'}
+                onFocus={e => e.target.style.borderColor = '#0369A1'}
                 onBlur={e => e.target.style.borderColor = '#e2e8f0'}
               />
               <input
@@ -161,7 +161,7 @@ export default function LeadForm({ city = '' }) {
                 onChange={e => setForm({ ...form, phone: e.target.value })}
                 placeholder="Numéro de téléphone"
                 style={inputStyle}
-                onFocus={e => e.target.style.borderColor = '#1a73e8'}
+                onFocus={e => e.target.style.borderColor = '#0369A1'}
                 onBlur={e => e.target.style.borderColor = '#e2e8f0'}
               />
               <button type="submit" style={btnStyle}
@@ -171,7 +171,7 @@ export default function LeadForm({ city = '' }) {
                 <Phone size={16} />
                 Recevoir ma soumission gratuite
               </button>
-              <button type="button" onClick={() => setStep(2)} style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '14px', cursor: 'pointer', fontFamily: 'Inter, sans-serif', padding: '4px' }}>
+              <button type="button" onClick={() => setStep(2)} style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '14px', cursor: 'pointer', fontFamily: 'Lexend, sans-serif', padding: '4px' }}>
                 Retour
               </button>
             </div>

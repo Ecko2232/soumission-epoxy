@@ -1,7 +1,29 @@
 import './index.css'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { Phone, CheckCircle, MapPin, ChevronDown, Shield, Clock, Award, ArrowRight } from 'lucide-react'
+
+// Animated stat counter
+function StatCounter({ target, suffix = '', prefix = '' }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    if (!inView) return
+    let start = 0
+    const duration = 1800
+    const step = target / (duration / 16)
+    const timer = setInterval(() => {
+      start += step
+      if (start >= target) { setCount(target); clearInterval(timer) }
+      else setCount(Math.floor(start))
+    }, 16)
+    return () => clearInterval(timer)
+  }, [inView, target])
+
+  return <span ref={ref}>{prefix}{count.toLocaleString()}{suffix}</span>
+}
 import LeadForm from './components/LeadForm'
 import { cities } from './data/cities'
 
@@ -30,7 +52,7 @@ function TrustBar() {
               padding: '14px 40px',
               borderRight: i < items.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
             }}>
-              <Icon size={16} color="#3B82F6" />
+              <Icon size={16} color="#0369A1" />
               <div>
                 <div style={{ fontSize: '13px', fontWeight: '600', color: '#F8FAFC', lineHeight: 1.2 }}>{item.label}</div>
                 <div style={{ fontSize: '11px', color: '#64748B', lineHeight: 1.2 }}>{item.sub}</div>
@@ -52,22 +74,22 @@ function Navbar() {
     }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '68px' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '2px' }}>
-          <span style={{ fontSize: '19px', fontWeight: '800', color: '#3B82F6', letterSpacing: '-0.5px' }}>Soumission</span>
+          <span style={{ fontSize: '19px', fontWeight: '800', color: '#0369A1', letterSpacing: '-0.5px' }}>Soumission</span>
           <span style={{ fontSize: '19px', fontWeight: '800', color: '#F8FAFC', letterSpacing: '-0.5px' }}>Époxy</span>
-          <span style={{ fontSize: '11px', fontWeight: '600', color: '#3B82F6', marginLeft: '6px', border: '1px solid rgba(59,130,246,0.3)', padding: '2px 7px', borderRadius: '4px', letterSpacing: '0.3px' }}>Québec</span>
+          <span style={{ fontSize: '11px', fontWeight: '600', color: '#0369A1', marginLeft: '6px', border: '1px solid rgba(3,105,161,0.3)', padding: '2px 7px', borderRadius: '4px', letterSpacing: '0.3px' }}>Québec</span>
         </div>
         <a
           href="tel:5141234567"
           style={{
             display: 'flex', alignItems: 'center', gap: '8px',
-            background: '#3B82F6', color: '#fff',
+            background: '#0369A1', color: '#fff',
             textDecoration: 'none', padding: '11px 22px',
             borderRadius: '8px', fontSize: '14px', fontWeight: '600',
             transition: 'background 0.2s', minHeight: '44px',
             cursor: 'pointer',
           }}
-          onMouseEnter={e => e.currentTarget.style.background = '#2563EB'}
-          onMouseLeave={e => e.currentTarget.style.background = '#3B82F6'}
+          onMouseEnter={e => e.currentTarget.style.background = '#0284C7'}
+          onMouseLeave={e => e.currentTarget.style.background = '#0369A1'}
         >
           <Phone size={15} />
           Appel gratuit
@@ -83,7 +105,7 @@ function FAQ() {
     <section style={{ padding: '96px 24px', background: '#F8FAFC' }}>
       <div style={{ maxWidth: '720px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-          <p style={{ fontSize: '12px', fontWeight: '700', color: '#3B82F6', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 12px' }}>FAQ</p>
+          <p style={{ fontSize: '12px', fontWeight: '700', color: '#0369A1', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 12px' }}>FAQ</p>
           <h2 style={{ fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: '800', color: '#0F172A', margin: 0, letterSpacing: '-0.5px' }}>
             Questions fréquentes
           </h2>
@@ -93,10 +115,10 @@ function FAQ() {
             <div key={i} style={{
               background: '#fff',
               border: '1px solid',
-              borderColor: open === i ? '#3B82F6' : '#E2E8F0',
+              borderColor: open === i ? '#0369A1' : '#E2E8F0',
               borderRadius: '12px', overflow: 'hidden',
               transition: 'border-color 0.2s, box-shadow 0.2s',
-              boxShadow: open === i ? '0 0 0 3px rgba(59,130,246,0.1)' : 'none',
+              boxShadow: open === i ? '0 0 0 3px rgba(3,105,161,0.1)' : 'none',
             }}>
               <button
                 onClick={() => setOpen(open === i ? null : i)}
@@ -108,7 +130,7 @@ function FAQ() {
                   minHeight: '44px',
                 }}
               >
-                <span style={{ fontSize: '15px', fontWeight: '600', color: open === i ? '#1D4ED8' : '#0F172A', lineHeight: '1.5' }}>
+                <span style={{ fontSize: '15px', fontWeight: '600', color: open === i ? '#0369A1' : '#0F172A', lineHeight: '1.5' }}>
                   {f.q}
                 </span>
                 <ChevronDown
@@ -143,7 +165,7 @@ export default function App() {
 
           {/* Left */}
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p style={{ fontSize: '12px', fontWeight: '700', color: '#3B82F6', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 20px' }}>
+            <p style={{ fontSize: '12px', fontWeight: '700', color: '#0369A1', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 20px' }}>
               Service de mise en relation — Province de Québec
             </p>
             <h1 style={{
@@ -188,7 +210,7 @@ export default function App() {
                       display: 'flex', alignItems: 'center', gap: '5px',
                       cursor: 'pointer', minHeight: '36px',
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = '#3B82F6'; e.currentTarget.style.color = '#93C5FD' }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = '#0369A1'; e.currentTarget.style.color = '#7DD3FC' }}
                     onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = '#94A3B8' }}
                   >
                     <MapPin size={11} />
@@ -213,7 +235,7 @@ export default function App() {
           >
             <div style={{ marginBottom: '28px' }}>
               <div style={{
-                display: 'inline-block', background: '#EFF6FF', color: '#1D4ED8',
+                display: 'inline-block', background: '#E0F2FE', color: '#0369A1',
                 fontSize: '11px', fontWeight: '700', padding: '4px 10px',
                 borderRadius: '4px', marginBottom: '14px',
                 textTransform: 'uppercase', letterSpacing: '0.8px',
@@ -232,11 +254,36 @@ export default function App() {
         </div>
       </section>
 
+      {/* Social proof stats */}
+      <section style={{ padding: '64px 24px', background: '#F8FAFC', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px', textAlign: 'center' }}>
+          {[
+            { target: 200, suffix: '+', label: 'Soumissions envoyées', sub: 'depuis le lancement' },
+            { target: 8, suffix: '', label: 'Villes desservies', sub: 'à travers le Québec' },
+            { target: 100, suffix: '%', label: 'Gratuit', sub: 'sans frais pour le client' },
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <div style={{ fontSize: 'clamp(36px, 4vw, 52px)', fontWeight: '800', color: '#0F172A', letterSpacing: '-1.5px', lineHeight: 1 }}>
+                <StatCounter target={stat.target} suffix={stat.suffix} />
+              </div>
+              <div style={{ fontSize: '15px', fontWeight: '600', color: '#0F172A', margin: '8px 0 4px' }}>{stat.label}</div>
+              <div style={{ fontSize: '13px', color: '#94A3B8' }}>{stat.sub}</div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* How it works */}
       <section style={{ padding: '96px 24px', background: '#fff' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <p style={{ fontSize: '12px', fontWeight: '700', color: '#3B82F6', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 12px' }}>Processus</p>
+            <p style={{ fontSize: '12px', fontWeight: '700', color: '#0369A1', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 12px' }}>Processus</p>
             <h2 style={{ fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: '800', color: '#0F172A', margin: 0, letterSpacing: '-0.5px' }}>
               Simple et sans frais
             </h2>
@@ -251,7 +298,7 @@ export default function App() {
                 {i < 2 && (
                   <div style={{ position: 'absolute', top: '22px', left: 'calc(100% - 20px)', width: '40px', height: '1px', background: 'linear-gradient(90deg, #E2E8F0, transparent)' }} />
                 )}
-                <div style={{ fontSize: '13px', fontWeight: '800', color: '#3B82F6', letterSpacing: '1px', marginBottom: '16px', fontVariantNumeric: 'tabular-nums' }}>
+                <div style={{ fontSize: '13px', fontWeight: '800', color: '#0369A1', letterSpacing: '1px', marginBottom: '16px', fontVariantNumeric: 'tabular-nums' }}>
                   {item.num}
                 </div>
                 <h3 style={{ fontSize: '17px', fontWeight: '700', color: '#0F172A', margin: '0 0 10px' }}>{item.title}</h3>
@@ -266,7 +313,7 @@ export default function App() {
       <section style={{ padding: '96px 24px', background: '#F8FAFC', borderTop: '1px solid #E2E8F0' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <p style={{ fontSize: '12px', fontWeight: '700', color: '#3B82F6', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 12px' }}>Couverture</p>
+            <p style={{ fontSize: '12px', fontWeight: '700', color: '#0369A1', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 12px' }}>Couverture</p>
             <h2 style={{ fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: '800', color: '#0F172A', margin: '0 0 14px', letterSpacing: '-0.5px' }}>
               Poseurs disponibles dans toute la province
             </h2>
@@ -287,10 +334,10 @@ export default function App() {
                   textDecoration: 'none', transition: 'all 0.15s',
                   cursor: 'pointer', minHeight: '56px',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = '#3B82F6'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(59,130,246,0.1)' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = '#0369A1'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(3,105,161,0.1)' }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.boxShadow = 'none' }}
               >
-                <MapPin size={15} color="#3B82F6" style={{ flexShrink: 0 }} />
+                <MapPin size={15} color="#0369A1" style={{ flexShrink: 0 }} />
                 <div>
                   <div style={{ fontSize: '14px', fontWeight: '600', color: '#0F172A' }}>Époxy {city.name}</div>
                   <div style={{ fontSize: '12px', color: '#94A3B8' }}>{city.region}</div>
@@ -307,7 +354,7 @@ export default function App() {
       {/* Bottom CTA */}
       <section style={{ padding: '96px 24px', background: '#0F172A', textAlign: 'center' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <p style={{ fontSize: '12px', fontWeight: '700', color: '#3B82F6', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 20px' }}>
+          <p style={{ fontSize: '12px', fontWeight: '700', color: '#0369A1', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 20px' }}>
             Commencez maintenant
           </p>
           <h2 style={{ fontSize: 'clamp(28px, 3.5vw, 46px)', fontWeight: '800', color: '#F8FAFC', margin: '0 0 18px', letterSpacing: '-0.8px', lineHeight: '1.15' }}>
@@ -320,12 +367,12 @@ export default function App() {
             href="#form"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '10px',
-              background: '#3B82F6', color: '#fff', textDecoration: 'none',
+              background: '#0369A1', color: '#fff', textDecoration: 'none',
               padding: '16px 36px', borderRadius: '10px', fontSize: '16px', fontWeight: '700',
               transition: 'background 0.2s', minHeight: '52px', cursor: 'pointer',
             }}
-            onMouseEnter={e => e.currentTarget.style.background = '#2563EB'}
-            onMouseLeave={e => e.currentTarget.style.background = '#3B82F6'}
+            onMouseEnter={e => e.currentTarget.style.background = '#0284C7'}
+            onMouseLeave={e => e.currentTarget.style.background = '#0369A1'}
           >
             <Phone size={17} />
             Obtenir ma soumission gratuite
@@ -345,7 +392,7 @@ export default function App() {
       <footer style={{ background: '#020617', padding: '36px 24px', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '2px' }}>
-            <span style={{ fontSize: '15px', fontWeight: '800', color: '#3B82F6' }}>Soumission</span>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: '#0369A1' }}>Soumission</span>
             <span style={{ fontSize: '15px', fontWeight: '800', color: '#475569' }}>Époxy</span>
           </div>
           <p style={{ color: '#334155', fontSize: '13px', margin: 0, textAlign: 'center', flex: 1 }}>
