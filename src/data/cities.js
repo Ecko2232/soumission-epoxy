@@ -1,0 +1,58 @@
+export const cities = [
+  {
+    slug: 'montreal',
+    name: 'Montréal',
+    region: 'Grand Montréal',
+    keywords: ['époxy garage Montréal', 'plancher époxy Montréal', 'pose époxy Montréal'],
+    population: '2M+',
+  },
+  {
+    slug: 'quebec',
+    name: 'Québec',
+    region: 'Région de Québec',
+    keywords: ['époxy garage Québec', 'plancher époxy Québec', 'pose époxy Québec'],
+    population: '800K+',
+  },
+  {
+    slug: 'sherbrooke',
+    name: 'Sherbrooke',
+    region: 'Estrie',
+    keywords: ['époxy Sherbrooke', 'plancher époxy Sherbrooke', 'garage époxy Sherbrooke'],
+    population: '170K+',
+  },
+  {
+    slug: 'gatineau',
+    name: 'Gatineau',
+    region: 'Outaouais',
+    keywords: ['époxy Gatineau', 'plancher époxy Gatineau', 'garage époxy Gatineau'],
+    population: '290K+',
+  },
+  {
+    slug: 'laval',
+    name: 'Laval',
+    region: 'Laval',
+    keywords: ['époxy Laval', 'plancher époxy Laval', 'garage époxy Laval'],
+    population: '440K+',
+  },
+  {
+    slug: 'longueuil',
+    name: 'Longueuil',
+    region: 'Montérégie',
+    keywords: ['époxy Longueuil', 'plancher époxy Longueuil', 'garage époxy Longueuil'],
+    population: '250K+',
+  },
+  {
+    slug: 'saint-hyacinthe',
+    name: 'Saint-Hyacinthe',
+    region: 'Montérégie',
+    keywords: ['époxy Saint-Hyacinthe', 'plancher époxy Saint-Hyacinthe'],
+    population: '60K+',
+  },
+  {
+    slug: 'trois-rivieres',
+    name: 'Trois-Rivières',
+    region: 'Mauricie',
+    keywords: ['époxy Trois-Rivières', 'plancher époxy Trois-Rivières'],
+    population: '140K+',
+  },
+]
