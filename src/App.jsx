@@ -513,7 +513,7 @@ function CitiesSection({ onSelectCity }) {
           style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px' }}
         >
           {filtered.map(city => (
-            <Link key={city.slug} to={`/poseur-epoxy-${city.slug}`}
+            <Link key={city.slug} to={`/poseur-epoxy/${city.slug}`}
               style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px 20px', background: C.bg3, border: `1px solid ${C.borderL}`, borderRadius: '10px', textDecoration: 'none', transition: 'all 0.15s', cursor: 'pointer', minHeight: '56px' }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = C.blue; e.currentTarget.style.boxShadow = '0 4px 16px rgba(3,105,161,0.1)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = C.borderL; e.currentTarget.style.boxShadow = 'none' }}

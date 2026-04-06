@@ -45,6 +45,8 @@ export default function CityPage() {
     if (!city) return
     document.title = `Poseur Époxy ${city.name} — Soumission gratuite | PoseurEpoxy.ca`
     // Update meta description
+    let canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) canonical.setAttribute('href', `https://poseurepoxy.ca/poseur-epoxy/${city.slug}`)
     let meta = document.querySelector('meta[name="description"]')
     if (meta) meta.setAttribute('content', `Trouvez un poseur époxy qualifié à ${city.name}. Garage, sous-sol, commercial — soumission 100% gratuite et sans engagement. Entrepreneurs certifiés RBQ dans la région ${city.region}.`)
     return () => {
@@ -217,7 +219,7 @@ export default function CityPage() {
                 {city.nearby.map(n => {
                   const nearbyCity = cities.find(c => c.name === n)
                   return nearbyCity ? (
-                    <Link key={n} to={`/poseur-epoxy-${nearbyCity.slug}`}
+                    <Link key={n} to={`/poseur-epoxy/${nearbyCity.slug}`}
                       style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '7px 14px', background: C.white, border: `1px solid ${C.borderL}`, borderRadius: '6px', fontSize: '13px', fontWeight: '600', color: C.blue, textDecoration: 'none', transition: 'all 0.15s' }}
                       onMouseEnter={e => { e.currentTarget.style.borderColor = C.blue; e.currentTarget.style.background = '#E0F2FE' }}
                       onMouseLeave={e => { e.currentTarget.style.borderColor = C.borderL; e.currentTarget.style.background = C.white }}

@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/poseur-epoxy-:citySlug" element={<CityPage />} />
+        <Route path="/poseur-epoxy/:citySlug" element={<CityPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
