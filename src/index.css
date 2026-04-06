@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 * { box-sizing: border-box; }
@@ -7,7 +7,7 @@ body {
   margin: 0;
   font-family: 'Lexend', sans-serif;
   -webkit-font-smoothing: antialiased;
-  background: #fff;
+  background: #060C14;
   color: #020617;
 }
 
@@ -17,4 +17,22 @@ input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: #0369A1 !important;
   box-shadow: 0 0 0 3px rgba(3,105,161,0.15);
+}
+
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+
+.metal-shimmer {
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255,255,255,0.06) 40%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.06) 60%,
+    transparent 80%
+  );
+  background-size: 600px 100%;
+  animation: shimmer 4s infinite linear;
 }
