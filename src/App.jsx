@@ -105,7 +105,7 @@ function Navbar() {
       <div style={{ height: '2px', background: `linear-gradient(90deg, transparent, ${C.blue}80, ${C.blueLt}90, ${C.blue}80, transparent)` }} />
       <div style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '66px' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '3px' }}>
-          <span style={{ fontSize: '20px', fontWeight: '800', color: C.blueLt, letterSpacing: '-0.5px' }}>Plancher</span>
+          <span style={{ fontSize: '20px', fontWeight: '800', color: C.blueLt, letterSpacing: '-0.5px' }}>Poseur</span>
           <span style={{ fontSize: '20px', fontWeight: '800', color: C.silver, letterSpacing: '-0.5px' }}>Époxy</span>
           <span style={{
             fontSize: '10px', fontWeight: '700', color: C.steel, marginLeft: '8px',
@@ -411,7 +411,7 @@ function APropos() {
           </h2>
           <div style={{ width: '56px', height: '3px', marginBottom: '24px', borderRadius: '2px', background: `linear-gradient(90deg, ${C.blue}, ${C.blueLt})` }} />
           <p style={{ fontSize: '16px', color: C.muted, lineHeight: '1.8', margin: '0 0 16px' }}>
-            PlancherEpoxy.ca n'est pas un simple annuaire. Derrière ce service se trouve une expertise concrète en génie civil et en application de résines — acquise sur le terrain, au Canada et à l'international.
+            PoseurEpoxy.ca n'est pas un simple annuaire. Derrière ce service se trouve une expertise concrète en génie civil et en application de résines — acquise sur le terrain, au Canada et à l'international.
           </p>
           <p style={{ fontSize: '16px', color: C.muted, lineHeight: '1.8', margin: 0 }}>
             Notre mission : connecter les propriétaires québécois avec des installateurs qui maîtrisent réellement leur métier. Chaque poseur est sélectionné pour son savoir-faire, pas seulement pour sa disponibilité.
@@ -668,7 +668,7 @@ export default function App() {
       <footer style={{ background: C.bg0, padding: '36px 28px', borderTop: `1px solid ${C.border}` }}>
         <div style={{ maxWidth: '1140px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '3px' }}>
-            <span style={{ fontSize: '15px', fontWeight: '800', color: C.blueLt }}>Plancher</span>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: C.blueLt }}>Poseur</span>
             <span style={{ fontSize: '15px', fontWeight: '800', color: C.steel }}>Époxy</span>
           </div>
           <p style={{ color: '#1E2E42', fontSize: '13px', margin: 0, textAlign: 'center', flex: 1 }}>

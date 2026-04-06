@@ -21,7 +21,7 @@ export default function LeadForm({ city = '' }) {
       await fetch('https://formspree.io/f/mpqoobqw', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, _subject: `PlancherEpoxy.ca — Nouveau lead — ${form.city || city}` }),
+        body: JSON.stringify({ ...form, _subject: `PoseurEpoxy.ca — Nouveau lead — ${form.city || city}` }),
       })
     } catch (_) {}
     setSubmitted(true)
