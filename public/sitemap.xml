@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Page principale -->
+  <url>
+    <loc>https://poseurepoxy.ca/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Grand Montréal -->
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/montreal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/laval</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/longueuil</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/brossard</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/saint-jean-sur-richelieu</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Montérégie -->
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/saint-hyacinthe</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/granby</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/sorel-tracy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/saint-bruno</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Laurentides -->
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/saint-jerome</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/blainville</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/mirabel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/mont-tremblant</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Région de Québec -->
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/quebec</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/levis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/saint-augustin</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Outaouais -->
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/gatineau</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/aylmer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Estrie -->
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/sherbrooke</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/magog</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Mauricie -->
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/trois-rivieres</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/shawinigan</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Lanaudière -->
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/repentigny</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/poseur-epoxy/joliette</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
