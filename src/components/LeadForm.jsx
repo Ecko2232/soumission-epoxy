@@ -21,7 +21,7 @@ export default function LeadForm({ city = '' }) {
       await fetch('https://formspree.io/f/mpqoobqw', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, _subject: `Nouveau lead époxy — ${form.city || city}` }),
+        body: JSON.stringify({ ...form, _subject: `PlancherEpoxy.ca — Nouveau lead — ${form.city || city}` }),
       })
     } catch (_) {}
     setSubmitted(true)
@@ -37,12 +37,13 @@ export default function LeadForm({ city = '' }) {
 
   const btnPrimary = {
     width: '100%', padding: '16px',
-    background: 'linear-gradient(135deg, #0369A1 0%, #025880 100%)',
-    color: '#fff', border: 'none', borderRadius: '10px',
-    fontSize: '16px', fontWeight: '700', cursor: 'pointer',
+    background: 'linear-gradient(135deg, #C8A84B 0%, #F0D060 28%, #FFE878 42%, #F5C842 55%, #D4A830 72%, #BF9230 100%)',
+    color: '#1A0E00', border: 'none', borderRadius: '10px',
+    fontSize: '16px', fontWeight: '800', cursor: 'pointer',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
     fontFamily: 'Lexend, sans-serif', transition: 'opacity 0.2s',
-    boxShadow: '0 4px 16px rgba(3,105,161,0.35)',
+    boxShadow: '0 6px 28px rgba(200,168,75,0.40), 0 2px 0 rgba(255,255,255,0.15) inset',
+    letterSpacing: '0.2px',
   }
 
   if (submitted) {

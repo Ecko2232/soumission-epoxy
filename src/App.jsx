@@ -29,6 +29,10 @@ const C = {
 const metalGrad = `linear-gradient(160deg, ${C.bg1} 0%, #0D1826 50%, #091420 100%)`
 const accentLine = `linear-gradient(90deg, transparent, ${C.blueLt}55, transparent)`
 
+// Chrome/gold CTA gradient — catches the eye against dark backgrounds
+const chromeCTA = `linear-gradient(135deg, #C8A84B 0%, #F0D060 28%, #FFE878 42%, #F5C842 55%, #D4A830 72%, #BF9230 100%)`
+const chromeShadow = `0 6px 28px rgba(200,168,75,0.45), 0 2px 0 rgba(255,255,255,0.15) inset`
+
 // ── Utilities ──────────────────────────────────────────────────────────────────
 function StatCounter({ target, suffix = '' }) {
   const [count, setCount] = useState(0)
@@ -101,24 +105,24 @@ function Navbar() {
       <div style={{ height: '2px', background: `linear-gradient(90deg, transparent, ${C.blue}80, ${C.blueLt}90, ${C.blue}80, transparent)` }} />
       <div style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '66px' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '3px' }}>
-          <span style={{ fontSize: '20px', fontWeight: '800', color: C.blueLt, letterSpacing: '-0.5px' }}>Soumission</span>
+          <span style={{ fontSize: '20px', fontWeight: '800', color: C.blueLt, letterSpacing: '-0.5px' }}>Plancher</span>
           <span style={{ fontSize: '20px', fontWeight: '800', color: C.silver, letterSpacing: '-0.5px' }}>Époxy</span>
           <span style={{
             fontSize: '10px', fontWeight: '700', color: C.steel, marginLeft: '8px',
             border: `1px solid ${C.border}`, padding: '2px 8px', borderRadius: '4px',
             letterSpacing: '1px', textTransform: 'uppercase',
             background: 'rgba(255,255,255,0.03)',
-          }}>Québec</span>
+          }}>.ca</span>
         </div>
         <a
           href="tel:5141234567"
           style={{
             display: 'flex', alignItems: 'center', gap: '8px',
-            background: `linear-gradient(135deg, ${C.blue} 0%, #025880 100%)`,
-            color: '#fff', textDecoration: 'none', padding: '11px 24px',
-            borderRadius: '8px', fontSize: '14px', fontWeight: '700',
-            minHeight: '44px', cursor: 'pointer', letterSpacing: '0.2px',
-            boxShadow: `0 4px 20px rgba(3,105,161,0.4)`,
+            background: chromeCTA,
+            color: '#1A0E00', textDecoration: 'none', padding: '11px 24px',
+            borderRadius: '8px', fontSize: '14px', fontWeight: '800',
+            minHeight: '44px', cursor: 'pointer', letterSpacing: '0.3px',
+            boxShadow: chromeShadow,
             transition: 'opacity 0.2s',
           }}
           onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
@@ -407,7 +411,7 @@ function APropos() {
           </h2>
           <div style={{ width: '56px', height: '3px', marginBottom: '24px', borderRadius: '2px', background: `linear-gradient(90deg, ${C.blue}, ${C.blueLt})` }} />
           <p style={{ fontSize: '16px', color: C.muted, lineHeight: '1.8', margin: '0 0 16px' }}>
-            SoumissionÉpoxy.ca n'est pas un simple annuaire. Derrière ce service se trouve une expertise concrète en génie civil et en application de résines — acquise sur le terrain, au Canada et à l'international.
+            PlancherEpoxy.ca n'est pas un simple annuaire. Derrière ce service se trouve une expertise concrète en génie civil et en application de résines — acquise sur le terrain, au Canada et à l'international.
           </p>
           <p style={{ fontSize: '16px', color: C.muted, lineHeight: '1.8', margin: 0 }}>
             Notre mission : connecter les propriétaires québécois avec des installateurs qui maîtrisent réellement leur métier. Chaque poseur est sélectionné pour son savoir-faire, pas seulement pour sa disponibilité.
@@ -638,11 +642,11 @@ export default function App() {
           </p>
           <a href="#form" style={{
             display: 'inline-flex', alignItems: 'center', gap: '10px',
-            background: `linear-gradient(135deg, ${C.blue} 0%, #025880 100%)`,
-            color: '#fff', textDecoration: 'none', padding: '17px 40px',
-            borderRadius: '10px', fontSize: '16px', fontWeight: '700',
-            minHeight: '54px', cursor: 'pointer', letterSpacing: '0.2px',
-            boxShadow: `0 8px 32px rgba(3,105,161,0.5)`, transition: 'opacity 0.2s',
+            background: chromeCTA,
+            color: '#1A0E00', textDecoration: 'none', padding: '17px 40px',
+            borderRadius: '10px', fontSize: '16px', fontWeight: '800',
+            minHeight: '54px', cursor: 'pointer', letterSpacing: '0.3px',
+            boxShadow: chromeShadow, transition: 'opacity 0.2s',
           }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
@@ -664,7 +668,7 @@ export default function App() {
       <footer style={{ background: C.bg0, padding: '36px 28px', borderTop: `1px solid ${C.border}` }}>
         <div style={{ maxWidth: '1140px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '3px' }}>
-            <span style={{ fontSize: '15px', fontWeight: '800', color: C.blueLt }}>Soumission</span>
+            <span style={{ fontSize: '15px', fontWeight: '800', color: C.blueLt }}>Plancher</span>
             <span style={{ fontSize: '15px', fontWeight: '800', color: C.steel }}>Époxy</span>
           </div>
           <p style={{ color: '#1E2E42', fontSize: '13px', margin: 0, textAlign: 'center', flex: 1 }}>
