@@ -37,12 +37,12 @@ export default function LeadForm({ city = '' }) {
 
   const btnPrimary = {
     width: '100%', padding: '16px',
-    background: 'linear-gradient(135deg, #C8A84B 0%, #F0D060 28%, #FFE878 42%, #F5C842 55%, #D4A830 72%, #BF9230 100%)',
-    color: '#1A0E00', border: 'none', borderRadius: '10px',
+    background: 'linear-gradient(135deg, #8E9EAE 0%, #C8D6E0 22%, #F0F4F8 40%, #FFFFFF 50%, #E0E8F0 60%, #B0C0CE 78%, #7A8C9A 100%)',
+    color: '#0F1923', border: 'none', borderRadius: '10px',
     fontSize: '16px', fontWeight: '800', cursor: 'pointer',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
     fontFamily: 'Lexend, sans-serif', transition: 'opacity 0.2s',
-    boxShadow: '0 6px 28px rgba(200,168,75,0.40), 0 2px 0 rgba(255,255,255,0.15) inset',
+    boxShadow: '0 6px 28px rgba(140,165,185,0.45), 0 2px 0 rgba(255,255,255,0.6) inset, 0 -1px 0 rgba(0,0,0,0.12) inset',
     letterSpacing: '0.2px',
   }
 

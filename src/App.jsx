@@ -30,8 +30,8 @@ const metalGrad = `linear-gradient(160deg, ${C.bg1} 0%, #0D1826 50%, #091420 100
 const accentLine = `linear-gradient(90deg, transparent, ${C.blueLt}55, transparent)`
 
 // Chrome/gold CTA gradient — catches the eye against dark backgrounds
-const chromeCTA = `linear-gradient(135deg, #C8A84B 0%, #F0D060 28%, #FFE878 42%, #F5C842 55%, #D4A830 72%, #BF9230 100%)`
-const chromeShadow = `0 6px 28px rgba(200,168,75,0.45), 0 2px 0 rgba(255,255,255,0.15) inset`
+const chromeCTA = `linear-gradient(135deg, #8E9EAE 0%, #C8D6E0 22%, #F0F4F8 40%, #FFFFFF 50%, #E0E8F0 60%, #B0C0CE 78%, #7A8C9A 100%)`
+const chromeShadow = `0 6px 28px rgba(140,165,185,0.5), 0 2px 0 rgba(255,255,255,0.6) inset, 0 -1px 0 rgba(0,0,0,0.15) inset`
 
 // ── Utilities ──────────────────────────────────────────────────────────────────
 function StatCounter({ target, suffix = '' }) {
@@ -119,7 +119,7 @@ function Navbar() {
           style={{
             display: 'flex', alignItems: 'center', gap: '8px',
             background: chromeCTA,
-            color: '#1A0E00', textDecoration: 'none', padding: '11px 24px',
+            color: '#0F1923', textDecoration: 'none', padding: '11px 24px',
             borderRadius: '8px', fontSize: '14px', fontWeight: '800',
             minHeight: '44px', cursor: 'pointer', letterSpacing: '0.3px',
             boxShadow: chromeShadow,
@@ -643,7 +643,7 @@ export default function App() {
           <a href="#form" style={{
             display: 'inline-flex', alignItems: 'center', gap: '10px',
             background: chromeCTA,
-            color: '#1A0E00', textDecoration: 'none', padding: '17px 40px',
+            color: '#0F1923', textDecoration: 'none', padding: '17px 40px',
             borderRadius: '10px', fontSize: '16px', fontWeight: '800',
             minHeight: '54px', cursor: 'pointer', letterSpacing: '0.3px',
             boxShadow: chromeShadow, transition: 'opacity 0.2s',
