@@ -1,5 +1,6 @@
 import './index.css'
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import {
   Phone, CheckCircle, MapPin, ChevronDown, Shield, Clock,
@@ -512,18 +513,18 @@ function CitiesSection({ onSelectCity }) {
           style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px' }}
         >
           {filtered.map(city => (
-            <a key={city.slug} href="#form" onClick={() => onSelectCity(city.name)}
+            <Link key={city.slug} to={`/poseur-epoxy-${city.slug}`}
               style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px 20px', background: C.bg3, border: `1px solid ${C.borderL}`, borderRadius: '10px', textDecoration: 'none', transition: 'all 0.15s', cursor: 'pointer', minHeight: '56px' }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = C.blue; e.currentTarget.style.boxShadow = '0 4px 16px rgba(3,105,161,0.1)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = C.borderL; e.currentTarget.style.boxShadow = 'none' }}
             >
               <MapPin size={14} color={C.blue} style={{ flexShrink: 0 }} />
               <div>
-                <div style={{ fontSize: '14px', fontWeight: '600', color: C.text }}>Époxy {city.name}</div>
+                <div style={{ fontSize: '14px', fontWeight: '600', color: C.text }}>Poseur époxy {city.name}</div>
                 <div style={{ fontSize: '12px', color: C.muted }}>{city.region}</div>
               </div>
               <ArrowRight size={13} color="#CBD5E1" style={{ marginLeft: 'auto', flexShrink: 0 }} />
-            </a>
+            </Link>
           ))}
         </motion.div>
       </div>
