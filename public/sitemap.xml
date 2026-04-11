@@ -8,6 +8,28 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Articles de blogue -->
+  <url>
+    <loc>https://poseurepoxy.ca/articles/5-erreurs-plancher-epoxy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/articles/guide-entretien-plancher-epoxy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/articles/epoxy-vs-polyuree</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poseurepoxy.ca/articles/prix-plancher-epoxy-quebec-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Grand Montréal -->
   <url>
     <loc>https://poseurepoxy.ca/poseur-epoxy/montreal</loc>

@@ -64,38 +64,172 @@ const faqs = [
 ]
 
 const articles = [
-  { category: 'Conseils',     title: '5 erreurs à éviter avec votre plancher d\'époxy',           excerpt: 'Évitez ces erreurs courantes qui peuvent ruiner votre plancher époxy et vous coûter cher en réparations.' },
-  { category: 'Comparatifs',  title: 'Époxy versus polyurée : quelle est la différence?',          excerpt: 'Comparez les deux systèmes de revêtement les plus populaires pour faire un choix éclairé selon vos besoins.' },
-  { category: 'Entretien',    title: 'Guide d\'entretien de votre plancher d\'époxy',              excerpt: 'Apprenez comment entretenir correctement votre plancher époxy pour qu\'il conserve son éclat pendant des années.' },
-  { category: 'Prix et coûts',title: 'Combien coûte un plancher d\'époxy au Québec en 2026?',     excerpt: 'Découvrez les prix moyens selon le type de système, la superficie et la région.' },
+  { category: 'Conseils',     slug: '/articles/5-erreurs-plancher-epoxy', title: '5 erreurs à éviter avec votre plancher d\'époxy',           excerpt: 'Évitez ces erreurs courantes qui peuvent ruiner votre plancher époxy et vous coûter cher en réparations.' },
+  { category: 'Comparatifs',  slug: '/articles/epoxy-vs-polyuree', title: 'Époxy versus polyurée : quelle est la différence?',          excerpt: 'Comparez les deux systèmes de revêtement les plus populaires pour faire un choix éclairé selon vos besoins.' },
+  { category: 'Entretien',    slug: '/articles/guide-entretien-plancher-epoxy', title: 'Guide d\'entretien de votre plancher d\'époxy',              excerpt: 'Apprenez comment entretenir correctement votre plancher époxy pour qu\'il conserve son éclat pendant des années.' },
+  { category: 'Prix et coûts',slug: '/articles/prix-plancher-epoxy-quebec-2026', title: 'Combien coûte un plancher d\'époxy au Québec en 2026?',     excerpt: 'Découvrez les prix moyens selon le type de système, la superficie et la région.' },
 ]
 
 const categoryColor = { Conseils: C.blue, Comparatifs: '#7C3AED', Entretien: '#059669', 'Prix et coûts': '#B45309' }
+
+// Real epoxy floor photos — photos du client (placées dans /public/)
+const FLOOR_PHOTOS = {
+  metallic: '/epoxy-metallic.jpg',  // époxy métallique or/bronze avec reflets
+  solid:    '/epoxy-solid.jpg',     // époxy uni beige glacé haute brillance
+  flake:    '/epoxy-flake.jpg',     // époxy flocons noir/blanc/bleu avec cove
+}
+
+/* ── Metallic Marble Epoxy — rendu SVG style "Josh Canales" ───────────────── */
+function MetallicMarbleFloor() {
+  return (
+    <div style={{ height: '220px', position: 'relative', overflow: 'hidden' }}>
+      {/* SVG turbulence pour les swirls organiques */}
+      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="marble" x="0%" y="0%" width="100%" height="100%" colorInterpolationFilters="sRGB">
+            {/* Génère le motif de marbre organique */}
+            <feTurbulence type="turbulence" baseFrequency="0.012 0.008" numOctaves="6" seed="42" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="180" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+            <feColorMatrix type="saturate" values="0.4" result="desaturated" />
+            <feBlend in="displaced" in2="desaturated" mode="multiply" result="blended" />
+          </filter>
+          <linearGradient id="metalBase" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stopColor="#1A1A22" />
+            <stop offset="18%"  stopColor="#3A3A48" />
+            <stop offset="35%"  stopColor="#8A8A9A" />
+            <stop offset="50%"  stopColor="#C8C8D8" />
+            <stop offset="65%"  stopColor="#E8E8F4" />
+            <stop offset="80%"  stopColor="#A0A0B8" />
+            <stop offset="100%" stopColor="#1E1E28" />
+          </linearGradient>
+          <linearGradient id="vein1" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%"   stopColor="rgba(255,255,255,0)"   />
+            <stop offset="40%"  stopColor="rgba(220,230,255,0.55)" />
+            <stop offset="50%"  stopColor="rgba(255,255,255,0.85)" />
+            <stop offset="60%"  stopColor="rgba(200,215,240,0.5)"  />
+            <stop offset="100%" stopColor="rgba(255,255,255,0)"   />
+          </linearGradient>
+          <linearGradient id="vein2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stopColor="rgba(180,200,230,0)"   />
+            <stop offset="45%"  stopColor="rgba(200,220,255,0.4)"  />
+            <stop offset="55%"  stopColor="rgba(255,255,255,0.7)"  />
+            <stop offset="100%" stopColor="rgba(180,200,230,0)"   />
+          </linearGradient>
+          <filter id="blur2">
+            <feGaussianBlur stdDeviation="2.5" />
+          </filter>
+          <filter id="blur1">
+            <feGaussianBlur stdDeviation="1" />
+          </filter>
+        </defs>
+        {/* Fond métallique sombre */}
+        <rect width="100%" height="100%" fill="url(#metalBase)" />
+        {/* Swirls turbulents */}
+        <rect width="100%" height="100%" fill="url(#metalBase)" filter="url(#marble)" opacity="0.7" />
+        {/* Veines principales lumineuses */}
+        <line x1="-20%" y1="70%" x2="120%" y2="20%" stroke="url(#vein1)" strokeWidth="28" filter="url(#blur2)" opacity="0.8" />
+        <line x1="10%" y1="90%" x2="95%" y2="5%"  stroke="url(#vein1)" strokeWidth="14" filter="url(#blur1)" opacity="0.9" />
+        <line x1="50%" y1="100%" x2="100%" y2="30%" stroke="url(#vein2)" strokeWidth="18" filter="url(#blur2)" opacity="0.65" />
+        {/* Veine fine brillante */}
+        <line x1="0%"  y1="55%" x2="80%" y2="10%"  stroke="white" strokeWidth="2"  opacity="0.6" />
+        <line x1="20%" y1="80%" x2="100%" y2="40%"  stroke="white" strokeWidth="1.5" opacity="0.45" />
+        {/* Reflet gloss surface */}
+        <rect width="100%" height="40%" fill="url(#vein2)" opacity="0.18" />
+      </svg>
+      {/* Overlay nacré bleu-argent */}
+      <div style={{ position: 'absolute', inset: 0,
+        background: 'linear-gradient(135deg, rgba(30,50,80,0.35) 0%, rgba(100,140,180,0.15) 35%, rgba(220,235,255,0.10) 50%, rgba(80,110,150,0.20) 65%, rgba(20,30,50,0.40) 100%)',
+      }} />
+      {/* Gloss highlight top */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '35%',
+        background: 'linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, transparent 100%)',
+      }} />
+      {/* Vignette bottom */}
+      <div style={{ position: 'absolute', inset: 0,
+        background: 'linear-gradient(to top, rgba(5,8,15,0.65) 0%, transparent 55%)',
+      }} />
+      <div className="metal-shimmer" style={{ position: 'absolute', inset: 0, opacity: 0.35 }} />
+    </div>
+  )
+}
 
 const floorTypes = [
   {
     name: 'Époxy métallique',
     desc: 'Effet nacré avec des reflets changeants selon l\'angle de la lumière. Rendu luxueux, idéal pour les garages et espaces de prestige.',
-    bg: 'linear-gradient(135deg, #8FA8BE 0%, #5D7A96 25%, #A8C0D0 50%, #6E8EA8 75%, #B8CCDa 100%)',
-    shimmer: 'radial-gradient(ellipse at 35% 35%, rgba(255,255,255,0.55) 0%, transparent 55%), radial-gradient(ellipse at 75% 70%, rgba(255,255,255,0.25) 0%, transparent 45%)',
     tags: ['Garage', 'Showroom', 'Prestige'],
+    type: 'metallic',
   },
   {
     name: 'Époxy uni',
     desc: 'Couleur solide et surface parfaitement lisse. Classique, durable, disponible dans une large gamme de teintes personnalisées.',
-    bg: 'linear-gradient(160deg, #1E3A5F 0%, #2A527E 50%, #183050 100%)',
-    shimmer: 'radial-gradient(ellipse at 65% 25%, rgba(255,255,255,0.18) 0%, transparent 50%)',
     tags: ['Commercial', 'Industriel', 'Résidentiel'],
+    type: 'solid',
   },
   {
     name: 'Époxy flocons',
     desc: 'Flocons colorés dispersés dans la résine. Cache efficacement les imperfections et offre une traction naturelle antidérapante.',
-    bg: 'linear-gradient(135deg, #C8BFB2 0%, #B8AFA2 50%, #C2B9AC 100%)',
-    shimmer: null,
-    speckles: true,
     tags: ['Garage', 'Atelier', 'Sous-sol'],
+    type: 'flake',
   },
 ]
+
+// Per-type visual overlay configs
+const FLOOR_OVERLAY = {
+  // Métallique : voile argenté-bleuté nacré par-dessus le plancher lustré
+  metallic: {
+    fallback: 'linear-gradient(135deg,#5C7A90 0%,#9FBDD4 20%,#D8EDF5 38%,#7090A8 55%,#E0EFF5 70%)',
+    colorOverlay: 'linear-gradient(135deg, rgba(100,160,200,0.22) 0%, rgba(180,210,230,0.18) 40%, rgba(56,189,248,0.12) 70%, transparent 100%)',
+    shimmer: true,
+  },
+  // Uni : teinte bleue-ardoise opaque — simule un époxy uni gris-bleu professionnel
+  solid: {
+    fallback: 'linear-gradient(155deg,#1A2E44 0%,#243D56 35%,#1C3348 65%)',
+    colorOverlay: 'rgba(22,42,68,0.82)',   // couche dense → couleur très uniforme visible
+    gloss: 'linear-gradient(to bottom, rgba(255,255,255,0.13) 0%, transparent 40%), linear-gradient(to top, rgba(56,189,248,0.18) 0%, transparent 55%)',
+    shimmer: true,
+  },
+  // Flocon : juste vignette sombre en bas, on veut voir les chips
+  flake: {
+    fallback: 'linear-gradient(145deg,#C4BCB4 0%,#B8B0A8 50%,#C0B8B0 100%)',
+    colorOverlay: null,
+    shimmer: false,
+  },
+}
+
+function FloorPreview({ type }) {
+  const [loaded, setLoaded] = useState(false)
+  const [error, setError]   = useState(false)
+  const src = FLOOR_PHOTOS[type]
+  const ov  = FLOOR_OVERLAY[type]
+
+  return (
+    <div style={{ height: '220px', position: 'relative', overflow: 'hidden', background: ov.fallback }}>
+      {/* Photo réelle */}
+      {!error && src && (
+        <img
+          src={src}
+          alt={`Plancher époxy ${type}`}
+          onLoad={() => setLoaded(true)}
+          onError={() => setError(true)}
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover',
+            objectPosition: type === 'flake' ? 'center bottom' : 'center center',
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.6s ease',
+          }}
+        />
+      )}
+      {/* Vignette bas — laisse voir la photo */}
+      <div style={{ position: 'absolute', inset: 0,
+        background: 'linear-gradient(to top, rgba(6,12,20,0.55) 0%, rgba(6,12,20,0.05) 45%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+    </div>
+  )
+}
 
 // ── Components ─────────────────────────────────────────────────────────────────
 
@@ -170,22 +304,41 @@ function Hero({ onSelectCity }) {
     <section style={{ padding: '84px 28px 100px', position: 'relative', overflow: 'hidden', background: C.bg0 }}>
       {/* Background video */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
-        <iframe
-          src="https://www.youtube.com/embed/V_P5U6-p0a8?autoplay=1&mute=1&loop=1&playlist=V_P5U6-p0a8&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=0"
-          allow="autoplay"
+        {/* CSS animated fallback always visible behind video */}
+        <div style={{ position: 'absolute', inset: 0,
+          background: 'linear-gradient(135deg, #050D1A 0%, #0A1830 25%, #061628 50%, #0C1E38 75%, #050D1A 100%)',
+        }} />
+        {/* Animated ambient blobs */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', top: '10%', left: '5%', width: '40%', height: '60%',
+            background: 'radial-gradient(ellipse, rgba(3,105,161,0.18) 0%, transparent 70%)',
+            animation: 'pulse 8s ease-in-out infinite',
+          }} />
+          <div style={{ position: 'absolute', top: '30%', right: '8%', width: '35%', height: '50%',
+            background: 'radial-gradient(ellipse, rgba(56,189,248,0.10) 0%, transparent 70%)',
+            animation: 'pulse 10s ease-in-out infinite reverse',
+          }} />
+          <div style={{ position: 'absolute', bottom: '5%', left: '30%', width: '45%', height: '40%',
+            background: 'radial-gradient(ellipse, rgba(14,165,233,0.08) 0%, transparent 70%)',
+          }} />
+        </div>
+        {/* HTML5 video — Mixkit free concrete footage */}
+        <video
+          autoPlay muted loop playsInline
           style={{
             position: 'absolute',
             top: '50%', left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '177.78vh', minWidth: '100%',
             height: '56.25vw', minHeight: '100%',
-            border: 'none', pointerEvents: 'none',
+            objectFit: 'cover', pointerEvents: 'none',
           }}
-          title="Époxy installation background"
-        />
+        >
+          <source src="https://assets.mixkit.co/videos/35577/35577-720.mp4" type="video/mp4" />
+        </video>
         {/* Dark overlay to keep text readable + metallic tint */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(6,12,20,0.88) 0%, rgba(11,20,34,0.80) 50%, rgba(6,12,20,0.90) 100%)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 70% 50%, rgba(3,105,161,0.10) 0%, transparent 60%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(5,10,20,0.82) 0%, rgba(8,16,30,0.75) 50%, rgba(5,10,20,0.85) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 70% 50%, rgba(3,105,161,0.12) 0%, transparent 60%)' }} />
       </div>
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: accentLine, zIndex: 1 }} />
 
@@ -352,29 +505,11 @@ function FloorGallery() {
               style={{ borderRadius: '14px', overflow: 'hidden', border: `1px solid ${C.border}`, background: C.bg2 }}
             >
               {/* visual preview */}
-              <div style={{ height: '180px', position: 'relative', background: ft.bg }}>
-                {ft.shimmer && <div style={{ position: 'absolute', inset: 0, background: ft.shimmer }} />}
-                {ft.speckles && (
-                  <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-                    {Array.from({ length: 90 }).map((_, j) => (
-                      <div key={j} style={{
-                        position: 'absolute',
-                        width: `${4 + (j * 3) % 8}px`, height: `${3 + (j * 5) % 9}px`,
-                        borderRadius: '2px',
-                        background: ['#8B7355','#6B8E5A','#4A6B8A','#C8A96E','#7A5C4A','#5A7A6B','#A0876A','#3D6B5A'][j % 8],
-                        left: `${(j * 37 + j * j * 3) % 95}%`,
-                        top: `${(j * 53 + j * 7) % 90}%`,
-                        opacity: 0.75,
-                        transform: `rotate(${j * 30}deg)`,
-                      }} />
-                    ))}
-                  </div>
-                )}
-                {/* metallic sheen overlay for all */}
-                <div className="metal-shimmer" style={{ position: 'absolute', inset: 0 }} />
+              <div style={{ position: 'relative' }}>
+                <FloorPreview type={ft.type} />
                 <div style={{ position: 'absolute', bottom: '12px', left: '12px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                   {ft.tags.map(tag => (
-                    <span key={tag} style={{ background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(4px)', color: '#fff', fontSize: '11px', fontWeight: '600', padding: '3px 9px', borderRadius: '4px' }}>
+                    <span key={tag} style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', color: '#fff', fontSize: '11px', fontWeight: '600', padding: '3px 9px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.12)' }}>
                       {tag}
                     </span>
                   ))}
@@ -542,23 +677,35 @@ function ArticlesSection() {
           <h2 style={h2Dark}>Tout ce que vous devez savoir sur les planchers époxy au Québec</h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
-          {articles.map((a, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.07 }}
-              style={{ padding: '28px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${C.border}`, borderRadius: '12px', cursor: 'pointer', transition: 'all 0.2s' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = C.blue; e.currentTarget.style.background = 'rgba(3,105,161,0.08)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '14px' }}>
-                <Tag size={11} color={categoryColor[a.category] || C.blue} />
-                <span style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.6px', textTransform: 'uppercase', color: categoryColor[a.category] || C.blue }}>{a.category}</span>
-              </div>
-              <h3 style={{ fontSize: '17px', fontWeight: '700', color: C.silver, margin: '0 0 10px', lineHeight: '1.4' }}>{a.title}</h3>
-              <p style={{ fontSize: '14px', color: C.steel, lineHeight: '1.65', margin: '0 0 20px' }}>{a.excerpt}</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: C.blueLt, fontSize: '13px', fontWeight: '600' }}>
-                <BookOpen size={13} /> Lire l'article <ArrowRight size={13} />
-              </div>
-            </motion.div>
-          ))}
+          {articles.map((a, i) => {
+            const cardStyle = { padding: '28px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${C.border}`, borderRadius: '12px', cursor: 'pointer', transition: 'all 0.2s', textDecoration: 'none', display: 'block' }
+            const inner = (
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '14px' }}>
+                  <Tag size={11} color={categoryColor[a.category] || C.blue} />
+                  <span style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.6px', textTransform: 'uppercase', color: categoryColor[a.category] || C.blue }}>{a.category}</span>
+                  {a.slug && <span style={{ marginLeft: 'auto', fontSize: '11px', background: 'rgba(3,105,161,0.2)', color: C.blueLt, padding: '2px 8px', borderRadius: '4px', fontWeight: '700' }}>Article</span>}
+                </div>
+                <h3 style={{ fontSize: '17px', fontWeight: '700', color: C.silver, margin: '0 0 10px', lineHeight: '1.4' }}>{a.title}</h3>
+                <p style={{ fontSize: '14px', color: C.steel, lineHeight: '1.65', margin: '0 0 20px' }}>{a.excerpt}</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: a.slug ? C.blueLt : C.steel, fontSize: '13px', fontWeight: '600' }}>
+                  <BookOpen size={13} /> {a.slug ? 'Lire l\'article' : 'Bientôt disponible'} {a.slug && <ArrowRight size={13} />}
+                </div>
+              </>
+            )
+            return (
+              <motion.div key={i} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.07 }}>
+                {a.slug ? (
+                  <Link to={a.slug} style={cardStyle}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = C.blue; e.currentTarget.style.background = 'rgba(3,105,161,0.08)' }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
+                  >{inner}</Link>
+                ) : (
+                  <div style={{ ...cardStyle, opacity: 0.7, cursor: 'default' }}>{inner}</div>
+                )}
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
