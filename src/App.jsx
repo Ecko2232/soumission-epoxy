@@ -432,6 +432,68 @@ function Hero({ onSelectCity }) {
   )
 }
 
+function PageHeader() {
+  return (
+    <section style={{ padding: '64px 28px 52px', background: metalGrad, position: 'relative', overflow: 'hidden', borderBottom: `1px solid ${C.border}` }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: accentLine }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 50%, rgba(3,105,161,0.10) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ maxWidth: '1140px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '20px', padding: '6px 14px', borderRadius: '6px', border: `1px solid ${C.border}`, background: 'rgba(56,189,248,0.06)' }}>
+            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: C.blueLt, boxShadow: `0 0 8px ${C.blueLt}` }} />
+            <span style={{ fontSize: '12px', fontWeight: '600', color: C.steel, letterSpacing: '1px', textTransform: 'uppercase' }}>
+              Service de mise en relation — Province de Québec
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: '800', lineHeight: '1.08', letterSpacing: '-2.5px', margin: '0 0 20px' }}>
+            <span style={{ color: C.white }}>Poseur Époxy </span>
+            <span style={{ background: `linear-gradient(90deg, ${C.blueLt}, ${C.silver})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Québec</span>
+          </h1>
+          <div style={{ width: '72px', height: '3px', margin: '0 auto 24px', borderRadius: '2px', background: `linear-gradient(90deg, ${C.blue}, ${C.blueLt})` }} />
+          <p style={{ fontSize: '18px', color: C.steel, lineHeight: '1.75', margin: '0 auto', maxWidth: '560px' }}>
+            Soumission gratuite, sans engagement. Mise en relation avec des entrepreneurs certifiés dans votre région.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+function FormSection() {
+  return (
+    <section style={{ padding: '72px 28px', background: metalGrad, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: accentLine }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 70% 50%, rgba(3,105,161,0.12) 0%, transparent 60%)', pointerEvents: 'none' }} />
+      <div style={{ maxWidth: '520px', margin: '0 auto', position: 'relative' }}>
+        <motion.div
+          id="form"
+          initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          style={{
+            background: C.white, borderRadius: '18px',
+            padding: '40px', boxShadow: '0 32px 80px rgba(0,0,0,0.55), 0 2px 0 rgba(255,255,255,0.06) inset',
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}
+        >
+          <div style={{ marginBottom: '28px' }}>
+            <div style={{
+              display: 'inline-block', background: '#E0F2FE', color: C.blue,
+              fontSize: '11px', fontWeight: '700', padding: '4px 10px',
+              borderRadius: '4px', marginBottom: '14px', textTransform: 'uppercase', letterSpacing: '0.8px',
+            }}>100% Gratuit</div>
+            <h2 style={{ fontSize: '22px', fontWeight: '800', color: C.text, margin: '0 0 6px', letterSpacing: '-0.3px' }}>
+              Obtenir une soumission
+            </h2>
+            <p style={{ color: C.muted, fontSize: '14px', margin: 0, lineHeight: '1.5' }}>
+              Remplissez le formulaire — un entrepreneur vous contactera.
+            </p>
+          </div>
+          <LeadForm />
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 function Stats() {
   const data = [
     { target: 200, suffix: '+', label: 'Soumissions envoyées', sub: 'depuis le lancement' },
@@ -766,10 +828,11 @@ export default function App() {
     <div style={{ minHeight: '100vh', background: C.white }}>
       <Navbar />
       <TrustBar />
-      <Hero onSelectCity={setSelectedCity} />
+      <PageHeader />
+      <FloorGallery />
+      <FormSection />
       <Stats />
       <HowItWorks />
-      <FloorGallery />
       <APropos />
       <TrustSection />
       <CitiesSection onSelectCity={setSelectedCity} />
