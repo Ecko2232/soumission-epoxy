@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import LeadForm from './components/LeadForm'
 import { cities, regionGroups } from './data/cities'
+import { PHONE_TEL, PHONE_DISPLAY } from './config'
 
 // ── Design tokens ──────────────────────────────────────────────────────────────
 const C = {
@@ -250,7 +251,7 @@ function Navbar() {
           }}>.ca</span>
         </div>
         <a
-          href="tel:5141234567"
+          href={PHONE_TEL}
           style={{
             display: 'flex', alignItems: 'center', gap: '8px',
             background: chromeCTA,
@@ -263,7 +264,7 @@ function Navbar() {
           onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
           onMouseLeave={e => e.currentTarget.style.opacity = '1'}
         >
-          <Phone size={15} /> Appel gratuit
+          <Phone size={15} /> {PHONE_DISPLAY}
         </a>
       </div>
     </nav>

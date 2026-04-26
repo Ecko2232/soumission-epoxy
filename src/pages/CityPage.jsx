@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { MapPin, CheckCircle, Phone, ArrowLeft, ArrowRight, Shield, Award, Clock } from 'lucide-react'
 import LeadForm from '../components/LeadForm'
 import { cities } from '../data/cities'
+import { PHONE_TEL, PHONE_DISPLAY } from '../config'
 
 const C = {
   bg0: '#060C14', bg1: '#0B1422', bg2: '#101D2E',
@@ -79,7 +80,7 @@ export default function CityPage() {
             <span style={{ fontSize: '20px', fontWeight: '800', color: C.silver }}>Époxy</span>
             <span style={{ fontSize: '10px', fontWeight: '700', color: C.steel, marginLeft: '8px', border: `1px solid ${C.border}`, padding: '2px 8px', borderRadius: '4px', letterSpacing: '1px', textTransform: 'uppercase', background: 'rgba(255,255,255,0.03)' }}>.ca</span>
           </Link>
-          <a href="tel:5141234567" style={{
+          <a href={PHONE_TEL} style={{
             display: 'flex', alignItems: 'center', gap: '8px',
             background: chromeCTA, color: '#0F1923', textDecoration: 'none',
             padding: '11px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: '800',
@@ -88,7 +89,7 @@ export default function CityPage() {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            <Phone size={15} /> Appel gratuit
+            <Phone size={15} /> {PHONE_DISPLAY}
           </a>
         </div>
       </nav>
